@@ -1,0 +1,7 @@
+@import './TheCarpenter.css';
+
+.page-testimony section {
+  padding: 3em 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}

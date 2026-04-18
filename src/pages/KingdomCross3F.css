@@ -1,0 +1,20 @@
+@import './TheCarpenter.css';
+
+.page-kc3f section {
+  padding: 3em 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.doors-grid-kc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+@media (max-width: 768px) {
+  .doors-grid-kc { grid-template-columns: repeat(2, 1fr); }
+}
