@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import FadeIn from '../components/FadeIn'
 
 const img = (p) => `/uploads/${p}`
+const I = ({ children, style }) => <div className="inner" style={style}>{children}</div>
 
 const doors = [
   { anchor: '#primeiro', key: 'door_rules',  bg: img('2025/11/Kingdom-Cross-20.png') },
@@ -22,29 +23,17 @@ const rules = [
 ]
 
 const firstCrosses = [
-  { code: 'KC 00/01', theme: 'Peace', focus: 'Family', request: '"To be less angry and demanding with my son and my parents. I feel a storm of anger within me, and I want to learn to master it with grace."' },
-  { code: 'KC 01/01', theme: 'Transformation', focus: 'Faith', request: '"Deliver me from vanity and fill me with Your presence, Lord."' },
-  { code: 'KC 01/02', theme: 'Faith', focus: 'Strength', request: '"Help me not to drift away from You, Lord, for that breaks my heart."' },
-  { code: 'KC 01/03', theme: 'Agnostic / Atheist', focus: 'The conflict between the carnal and the spiritual', request: '"Reveal Yourself to me, God, through history, philosophy, and science."' },
-  { code: 'KC 01/04', theme: 'Forgiveness', focus: 'Learning to forgive myself', request: '"Teach me to forgive myself. I have cried many nights for my own mistakes."' },
-  { code: 'KC 01/05', theme: 'Presence of God', focus: 'Feeling His presence again', request: '"Five days after January 22, 2025, I fell back into the world. I ask once more to live in His presence."' },
-  { code: 'KC 01/06', theme: 'Provision / Time', focus: 'Trusting God as the provider', request: '"Teach me to see that everything I have belongs to You. Free me from the fear of lack and the pride of abundance."' },
-  { code: 'KC 01/07', theme: 'Humility', focus: 'Letting go of arrogance', request: '"Everything I have done or known means nothing to God. Help me understand that I do not deserve You, except through the sacrifice of Christ."' },
+  { code: 'KC 00/01', theme: 'Peace',            focus: 'Family',                                      request: '"To be less angry and demanding with my son and my parents. I feel a storm of anger within me, and I want to learn to master it with grace."' },
+  { code: 'KC 01/01', theme: 'Transformation',   focus: 'Faith',                                       request: '"Deliver me from vanity and fill me with Your presence, Lord."' },
+  { code: 'KC 01/02', theme: 'Faith',             focus: 'Strength',                                    request: '"Help me not to drift away from You, Lord, for that breaks my heart."' },
+  { code: 'KC 01/03', theme: 'Agnostic/Atheist',  focus: 'The conflict between carnal and spiritual',   request: '"Reveal Yourself to me, God, through history, philosophy, and science."' },
+  { code: 'KC 01/04', theme: 'Forgiveness',       focus: 'Learning to forgive myself',                  request: '"Teach me to forgive myself. I have cried many nights for my own mistakes."' },
+  { code: 'KC 01/05', theme: 'Presence of God',   focus: 'Feeling His presence again',                  request: '"Five days after January 22, 2025, I fell back into the world. I ask once more to live in His presence."' },
+  { code: 'KC 01/06', theme: 'Provision / Time',  focus: 'Trusting God as the provider',               request: '"Teach me to see that everything I have belongs to You. Free me from the fear of lack and the pride of abundance."' },
+  { code: 'KC 01/07', theme: 'Humility',          focus: 'Letting go of arrogance',                     request: '"Everything I have done or known means nothing to God. Help me understand that I do not deserve You, except through the sacrifice of Christ."' },
 ]
 
-const seriesTable = [
-  { code: 'KC 0/01',  qty: '1 unit',       value: '—',       purpose: 'Founding Cross — The first KC, symbol of the Kingdom.' },
-  { code: 'KC 01/01', qty: '7 units',       value: '—',       purpose: 'Covenant Cross — The seven pillars of global restoration.' },
-  { code: 'KC 02/01', qty: '77 units',      value: '$77,777', purpose: 'Flame Cross — Supporting missions and spiritual leaders.' },
-  { code: 'KC 03/01', qty: '77,777 units',  value: '$777.77', purpose: 'Cross of Faith — Multiplication of seeds and expansion of the Kingdom.' },
-  { code: 'KC-3',     qty: 'Open series',   value: '$77.77',  purpose: 'Family Cross — Unity, purpose, and heritage.' },
-  { code: 'KC-3F',    qty: 'Open series',   value: '$37.77',  purpose: 'Grace Cross — Accessible symbol of faith for all.' },
-  { code: 'KC-7',     qty: 'Open series',   value: '$17.77',  purpose: 'Mission Cross — Each one blesses lives in active mission.' },
-]
-
-const W = ({ children, style }) => (
-  <div style={{ maxWidth: 1200, margin: '0 auto', ...style }}>{children}</div>
-)
+const seriesTable = [] // moved to i18n
 
 export default function Series() {
   const { t } = useTranslation()
@@ -52,30 +41,24 @@ export default function Series() {
   return (
     <main>
 
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section id="começo" className="hero-section" style={{ backgroundImage: `url(${img('2025/11/Mao-e-cruz.png')})` }}>
-        <FadeIn>
-          <h2 className="gold-title">{t('series.hero_title')}</h2>
-        </FadeIn>
-        <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(16px,2vw,24px)', fontWeight: 'normal', color: 'rgba(243,243,243,0.88)', textShadow: '0 0 12px rgba(0,0,0,0.8)', textAlign: 'center', maxWidth: 600 }}>
-          {t('series.hero_subtitle')}
-        </p>
+        <FadeIn><h2 className="title-hero">{t('series.hero_title')}</h2></FadeIn>
+        <p className="hero-sub">{t('series.hero_subtitle')}</p>
         <div className="gold-divider" style={{ margin: '1.5em auto' }} />
-        <p style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(13px,1.5vw,18px)', color: '#fff', textAlign: 'center', maxWidth: 700, fontStyle: 'italic' }}>
+        <p style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(12px,1.4vw,16px)', color: 'rgba(243,243,243,0.8)', textAlign: 'center', maxWidth: 680, fontStyle: 'italic' }}>
           {t('series.hero_verse')}
         </p>
-        <div className="hero-scroll" />
+        <div className="hero-scroll">▼</div>
       </section>
 
-      {/* ── DOORS TITLE ── */}
-      <section id="inicio" className="section-wood" style={{ textAlign: 'center', padding: '3.5em 2em' }}>
-        <FadeIn>
-          <h2 className="gold-title-dark">{t('series.doors_title')}</h2>
-        </FadeIn>
+      {/* DOORS TITLE — dark */}
+      <section id="inicio" className="section-dark" style={{ textAlign: 'center' }}>
+        <FadeIn><h2 className="title-section">{t('series.doors_title')}</h2></FadeIn>
         <div className="gold-divider" />
       </section>
 
-      {/* ── DOOR CARDS ── */}
+      {/* DOOR CARDS */}
       <div className="doors-row">
         {doors.map((d, i) => (
           <a key={i} href={d.anchor} className="door-card" style={{ backgroundImage: `url(${d.bg})` }}>
@@ -84,178 +67,151 @@ export default function Series() {
         ))}
       </div>
 
-      {/* ── RULES ── */}
-      <div className="btn-center section-wood">
-        <a href="#inicio" className="btn-gold">{t('series.to_doors')}</a>
-      </div>
+      {/* RULES — dark */}
+      <div className="btn-row section-dark"><a href="#inicio" className="btn-gold">{t('series.to_doors')}</a></div>
 
-      <section id="primeiro" className="section-wood" style={{ textAlign: 'center', padding: '3em 2em 1em' }}>
-        <FadeIn>
-          <h2 className="gold-title-dark">{t('series.rules_title')}</h2>
-        </FadeIn>
+      <section id="primeiro" className="section-dark" style={{ textAlign: 'center', paddingBottom: '1em' }}>
+        <FadeIn><h2 className="title-section">{t('series.rules_title')}</h2></FadeIn>
         <div className="gold-divider" />
       </section>
 
-      <section className="section-wood" style={{ padding: '0 2em 4em' }}>
-        <W>
+      <section className="section-dark" style={{ paddingTop: 0 }}>
+        <I>
           <div className="two-col">
             <div>
-              <h2 className="playfair-subtitle" style={{ marginBottom: '1.5em' }}>One Symbol. One Kingdom. One Message.</h2>
+              <h3 className="subtitle" style={{ marginBottom: '1.5em' }}>{t('series.rules_subtitle')}</h3>
               {rules.map((r) => (
                 <div key={r.num} className="rule-card">
-                  <div className="rule-number">{r.num}</div>
+                  <div className="rule-num">{r.num}</div>
                   <p className="rule-text">{r.text}</p>
                   <p className="rule-verse">{r.verse}</p>
                 </div>
               ))}
             </div>
             <div>
-              <img src={img('2025/11/ChatGPT-Image-4-de-nov.-de-2025-08_36_31-683x1024.png')} alt="Rules" style={{ filter: 'sepia(10%) brightness(0.88)', boxShadow: '0 0 40px rgba(0,0,0,0.6)' }} />
+              <img src={img('2025/11/ChatGPT-Image-4-de-nov.-de-2025-08_36_31-683x1024.png')} alt="Rules" />
               <div style={{ marginTop: '2em' }}>
-                <h2 className="playfair-subtitle">{t('series.golden_rule_title')}</h2>
-                <p className="playfair-body">{t('series.golden_rule_text')}</p>
-                <div className="cross-divider">✦</div>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 'normal', color: '#D1A412', textShadow: '0 0 14px rgba(196,167,9,0.4)' }}>
+                <h3 className="subtitle">{t('series.golden_rule_title')}</h3>
+                <p className="body-text">{t('series.golden_rule_text')}</p>
+                <div className="cross-mark">✦</div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 'normal', color: 'var(--gold)', marginBottom: '0.5em' }}>
                   {t('series.how_to_title')}
-                </h2>
-                <p className="playfair-body">{t('series.how_to_text')}</p>
+                </h3>
+                <p className="body-text">{t('series.how_to_text')}</p>
               </div>
             </div>
           </div>
-        </W>
+        </I>
       </section>
 
-      {/* ── THEMES ── */}
-      <section className="section-transition-gold" style={{ textAlign: 'center', padding: '2em' }}>
-        <a href="#inicio" className="btn-gold">{t('series.to_doors')}</a>
-        <FadeIn>
-          <h2 id="segundo" className="gold-title-dark" style={{ marginTop: '1.5em' }}>{t('series.themes_title')}</h2>
-        </FadeIn>
+      {/* THEMES — cream (contraste máximo para lista) */}
+      <div className="btn-row section-dark"><a href="#inicio" className="btn-gold">{t('series.to_doors')}</a></div>
+
+      <section id="segundo" className="section-cream" style={{ textAlign: 'center', paddingBottom: '1em' }}>
+        <FadeIn><h2 className="title-section">{t('series.themes_title')}</h2></FadeIn>
         <div className="gold-divider" />
       </section>
 
-      <section className="section-gold-glow" style={{ padding: '3em 2em' }}>
-        <W>
+      <section className="section-cream" style={{ paddingTop: 0 }}>
+        <I>
           <div className="two-col">
             <div>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 'normal', color: '#1a0800', textShadow: '0 0 20px rgba(0,0,0,0.2)' }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 'normal', color: 'var(--text-cream)', marginBottom: '1em' }}>
                 {t('series.sacred_echo')}
-              </h2>
-              <img src={img('2025/11/ax-595976_1920-683x1024.jpg')} alt="Sacred Echo" style={{ width: '100%', borderRadius: 3, boxShadow: '0 8px 30px rgba(0,0,0,0.4)', filter: 'sepia(5%)' }} />
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, fontWeight: 500, color: '#1a0800', marginTop: '1em', lineHeight: '1.7em' }}>
-                {t('series.sacred_echo_text')}
-              </p>
+              </h3>
+              <img src={img('2025/11/ax-595976_1920-683x1024.jpg')} alt="Sacred Echo" />
+              <p className="body-text" style={{ marginTop: '1em', color: 'var(--text-cream)' }}>{t('series.sacred_echo_text')}</p>
             </div>
             <div>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 'normal', color: '#1a0800' }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 'normal', color: 'var(--text-cream)', marginBottom: '0.5em' }}>
                 {t('series.choose_theme')}
-              </h2>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, fontWeight: 500, color: '#2a1000', marginBottom: '1.2em' }}>
-                {t('series.choose_theme_text')}
-              </p>
+              </h3>
+              <p className="body-text" style={{ marginBottom: '1em', color: 'var(--text-cream)' }}>{t('series.choose_theme_text')}</p>
               <div className="themes-grid">
-                {t('series.themes', { returnObjects: true }).map((theme, i) => (
-                  <div key={i} className="theme-chip" style={{ color: '#1a0800', borderColor: 'rgba(100,60,0,0.35)', background: 'rgba(100,60,0,0.08)' }}>
-                    {theme}
-                  </div>
+                {t('series.themes', { returnObjects: true }).map((theme) => (
+                  <div key={theme} className="theme-chip" style={{ color: 'var(--text-cream)', borderColor: 'rgba(139,105,20,0.4)', background: 'rgba(139,105,20,0.07)' }}>{theme}</div>
                 ))}
               </div>
             </div>
           </div>
-        </W>
+        </I>
       </section>
 
-      {/* ── FIRST CROSSES ── */}
-      <section className="section-transition-fade" style={{ textAlign: 'center', padding: '2em' }}>
-        <a href="#inicio" className="btn-gold">{t('series.to_doors')}</a>
-      </section>
+      {/* FIRST CROSSES — dark */}
+      <div className="btn-row section-dark"><a href="#inicio" className="btn-gold">{t('series.to_doors')}</a></div>
 
-      <section id="terceiro" className="section-wood" style={{ textAlign: 'center', padding: '3em 2em 1em' }}>
-        <FadeIn>
-          <h2 className="gold-title-dark">{t('series.first_crosses_title')}</h2>
-        </FadeIn>
+      <section id="terceiro" className="section-dark" style={{ textAlign: 'center', paddingBottom: '1em' }}>
+        <FadeIn><h2 className="title-section">{t('series.first_crosses_title')}</h2></FadeIn>
         <div className="gold-divider" />
       </section>
 
-      <section className="section-wood" style={{ padding: '0 2em 4em' }}>
-        <W>
+      <section className="section-dark" style={{ paddingTop: 0 }}>
+        <I>
           <div className="two-col">
             <div>
-              <h2 className="playfair-subtitle" style={{ marginBottom: '1.5em' }}>{t('series.first_eight_title')}</h2>
+              <h3 className="subtitle" style={{ marginBottom: '1.5em' }}>{t('series.first_eight_title')}</h3>
               {firstCrosses.map((c, i) => (
                 <div key={i} className="cross-entry">
                   <div className="cross-code">{c.code} — {c.theme}</div>
-                  <p className="playfair-body" style={{ fontSize: 15, marginBottom: 0 }}>
-                    <span style={{ color: 'rgba(212,175,55,0.7)', fontSize: 13 }}>Focus: </span>{c.focus}
+                  <p className="body-text" style={{ fontSize: 15, marginBottom: 0 }}>
+                    <span style={{ color: 'rgba(200,150,12,0.65)', fontSize: 13 }}>Focus: </span>{c.focus}
                   </p>
-                  <p className="playfair-body" style={{ fontSize: 15, fontStyle: 'italic', color: 'rgba(232,220,200,0.75)', marginBottom: 0 }}>
-                    {c.request}
-                  </p>
+                  <p className="body-text" style={{ fontSize: 15, fontStyle: 'italic', color: 'rgba(232,220,200,0.65)', marginBottom: 0 }}>{c.request}</p>
                 </div>
               ))}
             </div>
             <div>
-              <p className="playfair-body" style={{ fontSize: 16, marginBottom: '1.5em' }}>
-                Each cross is handcrafted from different types of rustic wood, supported by a wooden base, each with its own natural story. Hidden within her foundation lies a message, revealed only to those who hold her with faith.
-              </p>
-              <img src={img('2025/11/Kingdom-Cross-22-747x1024.png')} alt="Kingdom Cross" style={{ filter: 'sepia(10%) brightness(0.9)', boxShadow: '0 0 40px rgba(212,175,55,0.1)' }} />
-              <p className="playfair-body" style={{ fontFamily: "'Cinzel', serif", fontSize: 15, textAlign: 'center', marginTop: '1em', color: 'rgba(232,220,200,0.8)' }}>
-                The handwritten devotions of the first eight Kingdom Crosses carry more than words; they hold his journey of redemption.
-              </p>
-              <p style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: 'rgba(212,175,55,0.5)', textAlign: 'right', letterSpacing: '0.1em' }}>Written in English</p>
+              <p className="body-text" style={{ fontSize: 16, marginBottom: '1.5em' }}>{t('series.first_crosses_desc')}</p>
+              <img src={img('2025/11/Kingdom-Cross-22-747x1024.png')} alt="Kingdom Cross" />
+              <p className="body-text" style={{ fontFamily: "'Cinzel', serif", fontSize: 14, textAlign: 'center', marginTop: '1em', color: 'rgba(232,220,200,0.7)' }}>{t('series.first_crosses_note')}</p>
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: 11, color: 'rgba(200,150,12,0.45)', textAlign: 'right', letterSpacing: '0.1em' }}>{t('series.first_crosses_lang')}</p>
             </div>
           </div>
-        </W>
+        </I>
       </section>
 
-      {/* ── TESTIMONY LINK ── */}
-      <section style={{ background: 'linear-gradient(180deg,rgba(10,5,0,0.88) 0%,#fff 100%)', backgroundImage: `url(${img('2025/10/lumber-84678_1920-1-rotated.jpg')})`, backgroundSize: 'cover', backgroundBlendMode: 'multiply', padding: '3em 2em', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(20px,3vw,33px)', fontWeight: 400, color: '#f0e6cc', textShadow: '0 0 20px rgba(0,0,0,0.8)' }}>
-          <Link to="/testimony" style={{ color: '#D1A412', textDecoration: 'none' }}>{t('series.testimony_link')}</Link>
+      {/* TESTIMONY LINK — mid */}
+      <section className="section-mid" style={{ textAlign: 'center' }}>
+        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(18px,2.5vw,28px)', fontWeight: 400, color: 'var(--text-light)', marginBottom: '0.5em' }}>
+          <Link to="/testimony">{t('series.testimony_link')}</Link>
         </h2>
-      </section>
-
-      <section style={{ background: 'linear-gradient(180deg,rgba(255,255,255,0.1) 0%,rgba(10,5,0,0.88) 100%)', backgroundImage: `url(${img('2025/10/lumber-84678_1920-1-rotated.jpg')})`, backgroundSize: 'cover', backgroundBlendMode: 'multiply', padding: '2em', textAlign: 'center' }}>
+        <div className="gold-divider" />
         <a href="#inicio" className="btn-gold">{t('series.to_doors')}</a>
       </section>
 
-      {/* ── CHOOSE ── */}
-      <section id="quatro" className="section-wood" style={{ textAlign: 'center', padding: '4em 2em' }}>
-        <FadeIn>
-          <h2 className="gold-title-dark">{t('series.find_title')}</h2>
-        </FadeIn>
+      {/* CHOOSE — dark */}
+      <section id="quatro" className="section-dark" style={{ textAlign: 'center' }}>
+        <FadeIn><h2 className="title-section">{t('series.find_title')}</h2></FadeIn>
         <div className="gold-divider" />
         <FadeIn>
-          <h2 style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(20px,3vw,42px)', fontWeight: 600, color: '#E1AF0B', textShadow: '0 0 25px rgba(196,167,9,0.6)', marginBottom: '0.5em' }}>
-            <Link to="/formulario" style={{ color: '#E1AF0B', textDecoration: 'none' }}>{t('series.pray_choose')}</Link>
+          <h2 style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(18px,2.8vw,38px)', fontWeight: 600, color: 'var(--gold-bright)', textShadow: '0 0 20px rgba(196,167,9,0.5)', marginBottom: '0.5em' }}>
+            <Link to="/request">{t('series.pray_choose')}</Link>
           </h2>
         </FadeIn>
-        <p className="playfair-body" style={{ maxWidth: 500, margin: '0 auto 2em', textAlign: 'center' }}>{t('series.each_series')}</p>
+        <p className="body-text" style={{ maxWidth: 480, margin: '0 auto 2em', textAlign: 'center' }}>{t('series.each_series')}</p>
       </section>
 
-      {/* ── SERIES TABLE ── */}
-      <section className="section-wood" style={{ padding: '0 2em 4em' }}>
-        <W>
+      {/* SERIES TABLE — mid */}
+      <section className="section-mid" style={{ paddingTop: '2em' }}>
+        <I>
           <div className="two-col">
             <div>
-              <h2 className="playfair-subtitle" style={{ marginBottom: '1em' }}>
-                Some crosses are still on their way, fulfilling what Heaven has written for them.
-              </h2>
-              <img src={img('2025/11/11-747x1024.png')} alt="Kingdom Cross" style={{ filter: 'sepia(10%) brightness(0.88)', boxShadow: '0 0 40px rgba(212,175,55,0.1)' }} />
+              <h3 className="subtitle" style={{ marginBottom: '1em' }}>{t('series.table_subtitle')}</h3>
+              <img src={img('2025/11/11-747x1024.png')} alt="Kingdom Cross" />
             </div>
             <div>
-              <h2 className="playfair-subtitle" style={{ marginBottom: '1em' }}>{t('series.series_table_title')}</h2>
+              <h3 className="subtitle" style={{ marginBottom: '1em' }}>{t('series.series_table_title')}</h3>
               <div className="table-wrapper">
                 <table>
                   <thead>
-                    <tr><th>KC Series</th><th>Quantity</th><th>Value (USD)</th><th>Spiritual Purpose</th></tr>
+                    <tr><th>{t('series.table_th_series')}</th><th>{t('series.table_th_qty')}</th><th>{t('series.table_th_value')}</th><th>{t('series.table_th_purpose')}</th></tr>
                   </thead>
                   <tbody>
-                    {seriesTable.map((row, i) => (
+                    {t('series.table_rows', { returnObjects: true }).map((row, i) => (
                       <tr key={i}>
-                        <td><strong style={{ color: '#D1A412', fontFamily: "'Cinzel', serif", fontSize: 13 }}>{row.code}</strong></td>
+                        <td><strong style={{ color: 'var(--gold)', fontFamily: "'Cinzel', serif", fontSize: 13 }}>{row.code}</strong></td>
                         <td style={{ fontSize: 14 }}>{row.qty}</td>
-                        <td style={{ fontSize: 14, color: '#D1A412' }}>{row.value}</td>
+                        <td style={{ fontSize: 14, color: 'var(--gold)' }}>{row.value}</td>
                         <td style={{ fontSize: 14 }}>{row.purpose}</td>
                       </tr>
                     ))}
@@ -264,16 +220,16 @@ export default function Series() {
               </div>
             </div>
           </div>
-        </W>
+        </I>
       </section>
 
-      {/* ── FINAL CTA ── */}
-      <section className="section-wood" style={{ textAlign: 'center', padding: '4em 2em' }}>
+      {/* FINAL CTA — dark */}
+      <section className="section-dark" style={{ textAlign: 'center' }}>
         <Link to="/kingdom-cross-3f" className="btn-gold" style={{ marginBottom: '2em', display: 'inline-block' }}>Kingdom Cross 3F Page</Link>
         <div className="gold-divider" />
         <FadeIn>
-          <h2 className="gold-title-dark">
-            <Link to="/formulario" style={{ color: '#D1A412', textDecoration: 'none' }}>{t('series.choose_yours')}</Link>
+          <h2 className="title-section">
+            <Link to="/request">{t('series.choose_yours')}</Link>
           </h2>
         </FadeIn>
         <a href="#começo" className="btn-gold" style={{ marginTop: '1em' }}>{t('nav.kc3f')}</a>
